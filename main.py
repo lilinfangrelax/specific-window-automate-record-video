@@ -38,7 +38,12 @@ while True:
         obs_windows = pyautogui.getWindowsWithTitle(obs_studio_window_name)
         if obs_windows:
             obs_window = obs_windows[0]
-            obs_window.activate()
+            try:
+                obs_window.activate()
+            except:
+                obs_window.minimize()
+                obs_window.maximize()
+                obs_window.minimize()
             pyautogui.press(obs_studio_start_record_hotkey)
             obs_studio_recording = True
     if not check_process(target_process) and obs_studio_recording:
@@ -46,7 +51,12 @@ while True:
         obs_windows = pyautogui.getWindowsWithTitle(obs_studio_window_name)
         if obs_windows:
             obs_window = obs_windows[0]
-            obs_window.activate()
+            try:
+                obs_window.activate()
+            except:
+                obs_window.minimize()
+                obs_window.maximize()
+                obs_window.minimize()
             pyautogui.press(obs_studio_stop_record_hotkey)
             obs_studio_recording = False
     if obs_studio_recording:
